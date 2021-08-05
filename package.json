@@ -1,0 +1,49 @@
+{
+  "name": "leaflet-tracking-marker",
+  "version": "0.4.0",
+  "description": "React Leaflet marker that drifts to a certain point, computes its bearing angle using coordinates and rotates accordingly.",
+  "private": false,
+  "license": "MIT",
+  "author": {
+    "name": "Alexandra Capatina",
+    "url": "https://github.com/alexandra-c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:alexandra-c/leaflet-tracking-marker.git"
+  },
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@react-leaflet/core": "^1.1.0",
+    "leaflet": "^1.7.1",
+    "react-leaflet": "^3.2.1"
+  },
+  "devDependencies": {
+    "leaflet": "*"
+  },
+  "keywords": [
+    "react-leaflet-v3",
+    "react",
+    "leaflet",
+    "moving",
+    "rotated",
+    "marker",
+    "react",
+    "leaflet marker",
+    "react leaflet marker",
+    "leaflet-moving-marker",
+    "leaflet moving marker",
+    "leaflet rotating marker",
+    "leaflet bearing marker",
+    "leaflet sliding marker",
+    "sliding marker",
+    "leaflet-drift-marker",
+    "leaflet drift marker",
+    "drift marker",
+    "drift-marker"
+  ]
+}
