@@ -20,7 +20,7 @@ L.BaseMarker = L.Marker.extend({
     }
 
     this.options.rotationOrigin = this.options.rotationOrigin || iconAnchor || 'center'
-    this.options.bearingAngle = this.options.bearingAngle || 0
+    this.options.bearingAngle = this.options.rotationAngle || this.options.bearingAngle
 
     // Ensure marker keeps rotated during dragging
     this.on('drag', function (e) {
