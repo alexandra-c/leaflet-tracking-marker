@@ -1,4 +1,4 @@
-# leaflet-tracking-marker [![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=plastic)](http://opensource.org/licenses/MIT) [![npm version](https://badge.fury.io/js/leaflet-marker-rotation.svg)]()
+# react-leaflet-tracking-marker [![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=plastic)](http://opensource.org/licenses/MIT) [![npm version](https://badge.fury.io/js/leaflet-marker-rotation.svg)]()
 
 > A React leaflet marker that drifts to a certain point, computes its bearing angle using coordinates and rotates accordingly.
 
@@ -24,14 +24,14 @@ npm install --save leaflet react-leaflet
 
 Inherits props from `leaflet-drift-marker` and still supports all existing props from [react-leaflet marker](https://react-leaflet.js.org/docs/api-components/#marker)
 
-| Props              | Type               | Mandatory | Default    | Description                                                                                                                 |
-| ------------------ | ------------------ | --------- | ---------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `position`         | `LatLngExpression` | `yes`     |            | The current coordinates                                                                                                     |
-| `previousPosition` | `LatLngExpression` | `yes`     |            | The previous point coordinates, **Allows the marker to automatically computes its rotation angle.**                         |
-| `rotationAngle`    | `Number`           | `no`      | `0`        | Rotation angle, in degrees, clockwise. **`⚠ This will override the computed rotation angle`**                               |
-| `rotationOrigin`   | `String`           | `no`      | `'center'` | The rotation center, as a [`transform-origin`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin) CSS rule. |
-| `duration`         | `number`           | `no`      | ` `        | Required, duration im miliseconds marker will take to destination point                                                     |
-| `keepAtCenter`     | `boolean`          | `no`      | `false`    | Makes map view follow marker                                                                                                |
+| Props              | Type                | Default    | Description                                                                                                                 |
+| ------------------ | ------------------ | ---------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `position`         | `LatLngExpression`  |            | The current coordinates                                                                                                     |
+| `previousPosition` | `LatLngExpression`  |            | The previous point coordinates, **Allows the marker to automatically computes its rotation angle.**                         |
+| `rotationAngle`    | `Number`           | `0`        | Rotation angle, in degrees, clockwise. **⚠ This will override the computed rotation angle**                               |
+| `rotationOrigin`   | `String`           | `'center'` | The rotation center, as a [`transform-origin`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin) CSS rule. |
+| `duration`         | `number`           |      | Required, duration im miliseconds marker will take to destination point                                                     |
+| `keepAtCenter`     | `boolean`          | `false`    | Makes map view follow marker                                                                                                |
 
 #### Example
 
