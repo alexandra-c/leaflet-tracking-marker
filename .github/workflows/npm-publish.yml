@@ -8,7 +8,16 @@ on:
     types: [published]
 
 jobs:
-  build-bump-version:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.11.0
+      - run: npm install
+      - run: npm run build
+  bump-version:
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -21,8 +30,6 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Bump version
         run: npm version $(git describe --abbrev=0 --tags) --no-git-tag-version
-      - run: npm install
-      - run: npm run build
       - run: npm publish dist
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN }}
