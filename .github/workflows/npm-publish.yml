@@ -8,7 +8,7 @@ on:
     types: [published]
 
 jobs:
-  bump-version:
+  build-bump-version:
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -21,9 +21,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Bump version
         run: npm version $(git describe --abbrev=0 --tags) --no-git-tag-version
-      - run: npm ci
+      - run: npm install
       - run: npm run build
-      - run: cd dist
-      - run: npm publish
+      - run: npm publish dist
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN }}
