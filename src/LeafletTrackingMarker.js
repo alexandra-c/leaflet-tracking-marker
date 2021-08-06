@@ -1,4 +1,5 @@
-import { createLayerComponent } from '@react-leaflet/core'
+import { createElementHook, createPathHook } from '@react-leaflet/core'
+import { useEffect, useState } from 'react'
 import { BaseMarker } from './BaseMarker'
 
 let previousBearingAngle = 0
@@ -12,8 +13,9 @@ const computeBearing = (previousPosition, nexPosition) => {
 
 const createMarker = ({ position, previousPosition, ...options }, ctx) => {
   const bearingAngle = computeBearing(previousPosition, position)
-  previousBearingAngle = bearingAngle
-  const instance = new BaseMarker(position, { ...options, bearingAngle })
+  if (bearingAngle !== previousBearingAngle) previousBearingAngle = bearingAngle
+
+  const instance = new BaseMarker(position, { ...options, bearingAngle: previousBearingAngle })
   return { instance, context: { ...ctx, overlayContainer: instance } }
 }
 
@@ -41,16 +43,26 @@ const updateMarker = (marker, props, prevProps) => {
       marker.dragging.disable()
     }
   }
-  if (previousPosition) {
-    const bearingAngle = computeBearing(previousPosition, position)
-    if (bearingAngle !== previousBearingAngle) {
-      marker.setRotationAngle(bearingAngle)
-      previousBearingAngle = bearingAngle
-    }
+  const bearingAngle = computeBearing(previousPosition, position)
+  if (bearingAngle !== previousBearingAngle) {
+    marker.setRotationAngle(bearingAngle)
+    previousBearingAngle = bearingAngle
   }
   if (rotationOrigin !== prevProps.rotationOrigin) {
     marker.setRotationOrigin(rotationOrigin)
   }
 }
 
-export const LeafletTrackingMarker = createLayerComponent(createMarker, updateMarker)
+const useLeafletTrackingMarker = createPathHook(createElementHook(createMarker, updateMarker))
+
+export const LeafletTrackingMarker = props => {
+  const { position } = props
+  const [prevPos, setPrevPos] = useState(position)
+
+  useEffect(() => {
+    if (prevPos[0] !== position[0] && prevPos[1] !== position[1]) setPrevPos(position)
+  }, [position, prevPos])
+
+  useLeafletTrackingMarker({ ...props, previousPosition: prevPos })
+  return null
+}

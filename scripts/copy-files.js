@@ -27,6 +27,7 @@ async function run() {
     await createPackageFile()
     fse.copySync('./README.md', path.resolve(buildPath, './README.md'))
     fse.copySync('./LICENSE', path.resolve(buildPath, './LICENSE'))
+    fse.copySync('./src/index.d.ts', path.resolve(buildPath, './index.d.ts'))
   } catch (err) {
     console.error(err)
     process.exit(1)
