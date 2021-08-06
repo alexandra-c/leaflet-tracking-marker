@@ -30,6 +30,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Bump version
         run: npm version $(git describe --abbrev=0 --tags) --no-git-tag-version
-      - run: npm publish dist
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN }}
+      - name: NPM Publish
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          package: ./dist/package.json
+          token: ${{ secrets.NPM_TOKEN }}
