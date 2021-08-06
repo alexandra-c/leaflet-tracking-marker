@@ -36,10 +36,9 @@ Inherits props from `leaflet-drift-marker` and still supports all existing props
 ```jsx
 import LeafletTrackingMarker from 'react-leaflet-tracking-marker'
 
-;<LeafletTrackingMarker
+<LeafletTrackingMarker
   icon={icon}
   position={[latitude, longitude]}
-  previousPosition={[prevPos.latitude, prevPos.longitude]}
   duration={1000}
 />
 ```
