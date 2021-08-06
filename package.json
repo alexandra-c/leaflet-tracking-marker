@@ -14,7 +14,7 @@
   },
   "main": "dist/index.js",
   "files": [
-    "dist"
+    "dist/**/*"
   ],
   "scripts": {
     "prebuild": "rimraf dist",
