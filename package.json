@@ -13,6 +13,9 @@
     "url": "git@github.com:alexandra-c/leaflet-tracking-marker.git"
   },
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepublish": "npm run build",
     "prebuild": "rimraf dist",
