@@ -1,4 +1,4 @@
-# react-leaflet-tracking-marker [![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=plastic)](http://opensource.org/licenses/MIT) [![npm version](https://badge.fury.io/js/leaflet-marker-rotation.svg)]()
+# react-leaflet-tracking-marker [![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=plastic)](http://opensource.org/licenses/MIT) [![npm version](https://img.shields.io/npm/v/react-leaflet-tracking-marker.svg?style=plastic)](https://www.npmjs.com/package/react-leaflet-tracking-marker)
 
 > A React leaflet marker that drifts to a certain point, computes its bearing angle using coordinates and rotates accordingly.
 
