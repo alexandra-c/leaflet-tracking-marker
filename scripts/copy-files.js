@@ -25,6 +25,8 @@ async function createPackageFile() {
 async function run() {
   try {
     await createPackageFile()
+    fse.copySync('./README.md', path.resolve(buildPath, './README.md'))
+    fse.copySync('./LICENSE', path.resolve(buildPath, './LICENSE'))
   } catch (err) {
     console.error(err)
     process.exit(1)
