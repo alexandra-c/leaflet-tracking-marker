@@ -1,6 +1,5 @@
 {
   "name": "react-leaflet-tracking-marker",
-  "version": "1.0.4",
   "description": "React Leaflet marker that drifts to a certain point, computes its bearing angle using coordinates and rotates accordingly.",
   "private": false,
   "license": "MIT",
