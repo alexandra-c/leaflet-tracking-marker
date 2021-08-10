@@ -1,5 +1,4 @@
-import { createElementHook, createPathHook } from '@react-leaflet/core'
-import { useEffect, useState } from 'react'
+import { createLayerComponent } from '@react-leaflet/core'
 import { BaseMarker } from './BaseMarker'
 
 let previousBearingAngle = 0
@@ -14,8 +13,7 @@ const computeBearing = (previousPosition, nexPosition) => {
 const createMarker = ({ position, previousPosition, ...options }, ctx) => {
   const bearingAngle = computeBearing(previousPosition, position)
   if (bearingAngle !== previousBearingAngle) previousBearingAngle = bearingAngle
-
-  const instance = new BaseMarker(position, { ...options, bearingAngle: previousBearingAngle })
+  const instance = new BaseMarker(position, { ...options, bearingAngle })
   return { instance, context: { ...ctx, overlayContainer: instance } }
 }
 
@@ -53,16 +51,4 @@ const updateMarker = (marker, props, prevProps) => {
   }
 }
 
-const useLeafletTrackingMarker = createPathHook(createElementHook(createMarker, updateMarker))
-
-export const LeafletTrackingMarker = props => {
-  const { position } = props
-  const [prevPos, setPrevPos] = useState(position)
-
-  useEffect(() => {
-    if (prevPos[0] !== position[0] && prevPos[1] !== position[1]) setPrevPos(position)
-  }, [position, prevPos])
-
-  useLeafletTrackingMarker({ ...props, previousPosition: prevPos })
-  return null
-}
+export const LeafletTrackingMarker = createLayerComponent(createMarker, updateMarker)

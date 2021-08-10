@@ -24,23 +24,29 @@ npm install --save leaflet react-leaflet
 
 Inherits props from `leaflet-drift-marker` and still supports all existing props from [react-leaflet marker](https://react-leaflet.js.org/docs/api-components/#marker)
 
-| Props            | Type               | Default    | Description                                                                                                                 |
-| ---------------- | ------------------ | ---------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `position`       | `LatLngExpression` |            | The current coordinates                                                                                                     |
-| `rotationOrigin` | `String`           | `'center'` | The rotation center, as a [`transform-origin`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin) CSS rule. |
-| `duration`       | `number`           |            | Required, duration in milliseconds marker will take to destination point                                                    |
-| `keepAtCenter`   | `boolean`          | `false`    | Makes map view follow marker                                                                                                |
+| Props              | Type               | Default    | Description                                                                                                                 |
+| ------------------ | ------------------ | ---------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `position`         | `LatLngExpression` |            | The current coordinates. This is mandatory.|
+| `previousPosition` | `LatLngExpression` |            | The previous point coordinates, **Allows the marker to automatically computes its rotation angle.** This is mandatory.|
+| `rotationOrigin`   | `String`           | `'center'` | The rotation center, as a [`transform-origin`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin) CSS rule. |
+| `duration`         | `number`           |            | Required, duration in milliseconds marker will take to destination point                                                    |
+| `keepAtCenter`     | `boolean`          | `false`    | Makes map view follow marker                                                                                                |
 
 #### Example
 
-```jsx
+```js
 import LeafletTrackingMarker from 'react-leaflet-tracking-marker'
 
-<LeafletTrackingMarker
-  icon={icon}
-  position={[latitude, longitude]}
-  duration={1000}
-/>
+function AirplaneMarker({ data }) {
+  const { latitude, longitude } = data
+  const [prevPos, setPrevPos] = useState([latitude, longitude])
+
+  useEffect(() => {
+    if (prevPos[1] !== longitude && prevPos[0] !== latitude) setPrevPos([latitude, longitude])
+  }, [latitude, longitude, prevPos])
+
+  return <LeafletTrackingMarker icon={icon} position={[latitude, longitude]} previousPosition={prevPos} duration={1000} />
+}
 ```
 
 # License

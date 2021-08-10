@@ -11,6 +11,10 @@ export class LeafletTrackingMarker extends Marker {
 
 interface TrackingMarkerOptions extends MarkerOptions {
   /*
+   * Previous position coordinates used to compute the bearing angle in degrees, clockwise. Defaults to 'center'
+   */
+  previousPosition: LatLngExpression
+  /*
    * Rotation angle, in degrees, clockwise. Defaults to 'center'
    */
   rotationOrigin?: string
