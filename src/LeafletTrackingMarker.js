@@ -12,7 +12,6 @@ const computeBearing = (previousPosition, nexPosition) => {
 
 const createMarker = ({ position, previousPosition, ...options }, ctx) => {
   const bearingAngle = computeBearing(previousPosition, position)
-  if (bearingAngle !== previousBearingAngle) previousBearingAngle = bearingAngle
   const instance = new BaseMarker(position, { ...options, bearingAngle })
   return { instance, context: { ...ctx, overlayContainer: instance } }
 }
