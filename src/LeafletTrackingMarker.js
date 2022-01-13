@@ -1,8 +1,8 @@
 import { createLayerComponent } from '@react-leaflet/core'
 import { BaseMarker } from './BaseMarker'
 
-let previousBearingAngle = 0
-const computeBearing = (previousPosition, nexPosition) => {
+const defaultPosition = [0, 0]
+const computeBearing = (previousPosition = defaultPosition, nexPosition) => {
   let bearing = Math.atan2(nexPosition[0] - previousPosition[0], nexPosition[1] - previousPosition[1])
   bearing = bearing * (180 / Math.PI)
   bearing = (bearing + 360) % 360
@@ -40,10 +40,9 @@ const updateMarker = (marker, props, prevProps) => {
       marker.dragging.disable()
     }
   }
-  const bearingAngle = computeBearing(previousPosition, position)
-  if (bearingAngle !== previousBearingAngle) {
+  if (previousPosition?.[0] !== position[0] && previousPosition?.[1] !== position[1]) {
+    const bearingAngle = computeBearing(previousPosition, position)
     marker.setRotationAngle(bearingAngle)
-    previousBearingAngle = bearingAngle
   }
   if (rotationOrigin !== prevProps.rotationOrigin) {
     marker.setRotationOrigin(rotationOrigin)
