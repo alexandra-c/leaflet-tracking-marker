@@ -48,7 +48,7 @@ function AirplaneMarker({ data }) {
   return <LeafletTrackingMarker icon={icon} position={[latitude, longitude]} previousPosition={prevPos} duration={1000} />
 }
 ```
-
+Also check-out this working example here: https://codesandbox.io/s/react-leaflet-tracking-marker-example-ivlhk?file=/src/App.js
 # License
 
 MIT License
