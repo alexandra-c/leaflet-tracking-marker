@@ -32,6 +32,8 @@ Inherits props from `leaflet-drift-marker` and still supports all existing props
 | `duration`         | `number`           |            | Required, duration in milliseconds marker will take to destination point                                                    |
 | `keepAtCenter`     | `boolean`          | `false`    | Makes map view follow marker                                                                                                |
 
+> **Note:** **LatLngExpression** type defines an array of latitude and longitude values. e.g. [51.505, -0.09] 
+
 #### Example
 
 ```js
