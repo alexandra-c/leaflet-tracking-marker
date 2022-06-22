@@ -13,9 +13,9 @@ interface TrackingMarkerOptions extends MarkerOptions {
   /*
    * Previous position coordinates used to compute the bearing angle in degrees, clockwise. Defaults to 'center'
    */
-  previousPosition: LatLngExpression
+  previousPosition?: LatLngExpression
   /*
-   * Set rotation angle manually (if use this option, it will ignore previousPosition)
+   * Rotation angle, in degrees, clockwise. Allows setting the marker rotation angle manually, ignoring the 'previousPosition' property.
    */
   rotationAngle?: number  
   /*
