@@ -14,7 +14,8 @@ const createMarker = ({ position, previousPosition, ...options }, ctx) => {
   const bearingAngle = computeBearing(previousPosition, position)
   const instance = new BaseMarker(position, { ...options, bearingAngle })
   return { instance, context: { ...ctx, overlayContainer: instance } }
-}
+const createMarker = ({ position, previousPosition, rotationAngle, ...options }, ctx) => {
+  const bearingAngle = rotationAngle ?? computeBearing(previousPosition, position)
 
 const updateMarker = (marker, props, prevProps) => {
   const { position, previousPosition, duration, keepAtCenter, icon, zIndexOffset, opacity, draggable, rotationOrigin, rotationAngle } = props
