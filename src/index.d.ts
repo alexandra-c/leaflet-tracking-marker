@@ -15,6 +15,10 @@ interface TrackingMarkerOptions extends MarkerOptions {
    */
   previousPosition: LatLngExpression
   /*
+   * Set rotation angle manually (if use this option, it will ignore previousPosition)
+   */
+  rotationAngle?: number  
+  /*
    * Rotation angle, in degrees, clockwise. Defaults to 'center'
    */
   rotationOrigin?: string
