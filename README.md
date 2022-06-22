@@ -31,6 +31,7 @@ Inherits props from `leaflet-drift-marker` and still supports all existing props
 | `rotationOrigin`   | `String`           | `'center'` | The rotation center, as a [`transform-origin`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin) CSS rule. |
 | `duration`         | `number`           |            | Required, duration in milliseconds marker will take to destination point                                                    |
 | `keepAtCenter`     | `boolean`          | `false`    | Makes map view follow marker                                                                                                |
+| `rotationAngle`    | `number`          |             | Set marker head direction manually(number between 0 to 360). if use this prop, it will ignore `previousPosition` prop. This is optional.|
 
 > **Note:** **LatLngExpression** type defines an array of latitude and longitude values. e.g. [51.505, -0.09] 
 
