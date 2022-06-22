@@ -19,7 +19,7 @@ interface TrackingMarkerOptions extends MarkerOptions {
    */
   rotationAngle?: number  
   /*
-   * Rotation angle, in degrees, clockwise. Defaults to 'center'
+   * The rotation center, as a transform-origin CSS rule. Defaults to 'center'
    */
   rotationOrigin?: string
   /*

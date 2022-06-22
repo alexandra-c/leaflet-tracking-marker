@@ -27,11 +27,11 @@ Inherits props from `leaflet-drift-marker` and still supports all existing props
 | Props              | Type               | Default    | Description                                                                                                                 |
 | ------------------ | ------------------ | ---------- | --------------------------------------------------------------------------------------------------------------------------- |
 | `position`         | `LatLngExpression` |            | The current coordinates. This is mandatory.|
-| `previousPosition` | `LatLngExpression` |            | The previous point coordinates, **Allows the marker to automatically computes its rotation angle.** This is mandatory.|
+| `previousPosition` | `LatLngExpression` |            | The previous point coordinates. **Allows the marker to automatically computes its rotation angle.** To set a fixed value, consider using `rotationAngle` property.|
 | `rotationOrigin`   | `String`           | `'center'` | The rotation center, as a [`transform-origin`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin) CSS rule. |
 | `duration`         | `number`           |            | Required, duration in milliseconds marker will take to destination point                                                    |
 | `keepAtCenter`     | `boolean`          | `false`    | Makes map view follow marker                                                                                                |
-| `rotationAngle`    | `number`          |             | Set marker head direction manually(number between 0 to 360). if use this prop, it will ignore `previousPosition` prop. This is optional.|
+| `rotationAngle`    | `number`          | `0`       | Rotation angle, in degrees, clockwise. Allows setting the marker rotation angle manually, replacing the rotation angle value that was automatically computed using the `previousPosition` property if provided.|
 
 > **Note:** **LatLngExpression** type defines an array of latitude and longitude values. e.g. [51.505, -0.09] 
 
