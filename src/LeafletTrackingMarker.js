@@ -10,14 +10,14 @@ const computeBearing = (previousPosition = defaultPosition, nexPosition) => {
   return bearing
 }
 
-const createMarker = ({ position, previousPosition, ...options }, ctx) => {
-  const bearingAngle = computeBearing(previousPosition, position)
+const createMarker = ({ position, previousPosition, rotationAngle, ...options }, ctx) => {
+  const bearingAngle = rotationAngle ?? computeBearing(previousPosition, position)
   const instance = new BaseMarker(position, { ...options, bearingAngle })
   return { instance, context: { ...ctx, overlayContainer: instance } }
 }
 
 const updateMarker = (marker, props, prevProps) => {
-  const { position, previousPosition, duration, keepAtCenter, icon, zIndexOffset, opacity, draggable, rotationOrigin } = props
+  const { position, previousPosition, duration, keepAtCenter, icon, zIndexOffset, opacity, draggable, rotationOrigin, rotationAngle } = props
   if (prevProps.position !== position && typeof duration == 'number') {
     marker.slideTo(position, {
       duration,
@@ -40,10 +40,13 @@ const updateMarker = (marker, props, prevProps) => {
       marker.dragging.disable()
     }
   }
-  if (previousPosition?.[0] !== position[0] && previousPosition?.[1] !== position[1]) {
+  if (rotationAngle) {
+    marker.setRotationAngle(rotationAngle)
+  } else if (previousPosition?.[0] !== position[0] && previousPosition?.[1] !== position[1]) {
     const bearingAngle = computeBearing(previousPosition, position)
     marker.setRotationAngle(bearingAngle)
   }
+
   if (rotationOrigin !== prevProps.rotationOrigin) {
     marker.setRotationOrigin(rotationOrigin)
   }
