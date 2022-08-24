@@ -40,7 +40,7 @@ const updateMarker = (marker, props, prevProps) => {
       marker.dragging.disable()
     }
   }
-  if (rotationAngle) {
+  if (rotationAngle !== null && rotationAngle !== void 0) {
     marker.setRotationAngle(rotationAngle)
   } else if (previousPosition?.[0] !== position[0] && previousPosition?.[1] !== position[1]) {
     const bearingAngle = computeBearing(previousPosition, position)
