@@ -1,13 +1,5 @@
-import { LatLngExpression, Marker, MarkerOptions } from 'leaflet'
-
-export class LeafletTrackingMarker extends Marker {
-  constructor(position: LatLngExpression, options: TrackingMarkerOptions | MarkerOptions)
-
-  /*
-   * Sets the rotation origin value.
-   */
-  setRotationOrigin(newOrigin: string): void
-}
+import { type ForwardRefExoticComponent, type RefAttributes } from 'react'
+import { type LatLngExpression, Marker, type MarkerOptions } from 'leaflet'
 
 interface TrackingMarkerOptions extends MarkerOptions {
   /*
@@ -17,7 +9,7 @@ interface TrackingMarkerOptions extends MarkerOptions {
   /*
    * Rotation angle, in degrees, clockwise. Allows setting the marker rotation angle manually, ignoring the 'previousPosition' property.
    */
-  rotationAngle?: number  
+  rotationAngle?: number
   /*
    * The rotation center, as a transform-origin CSS rule. Defaults to 'center'
    */
@@ -29,5 +21,22 @@ interface TrackingMarkerOptions extends MarkerOptions {
   /*
    * If 'true' it makes map view follow marker
    */
-  keepAtCenter: boolean
+  keepAtCenter?: boolean
 }
+
+type TrackingMarkerProps = TrackingMarkerOptions & {
+  position: LatLngExpression
+}
+
+declare class LeafletTrackingMarkerElement extends Marker {
+  constructor(position: LatLngExpression, options: TrackingMarkerOptions)
+  declare options: TrackingMarkerOptions
+
+  /*
+   * Sets the rotation origin value.
+   */
+  setRotationOrigin(newOrigin: string): void
+}
+
+declare const LeafletTrackingMarker: ForwardRefExoticComponent<TrackingMarkerProps & RefAttributes<LeafletTrackingMarkerElement>>
+export { LeafletTrackingMarker, type LeafletTrackingMarkerElement, TrackingMarkerOptions }
