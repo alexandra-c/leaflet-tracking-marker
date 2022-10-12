@@ -38,7 +38,7 @@ Inherits props from `leaflet-drift-marker` and still supports all existing props
 #### Example
 
 ```js
-import LeafletTrackingMarker from 'react-leaflet-tracking-marker'
+import { LeafletTrackingMarker } from "react-leaflet-tracking-marker";
 
 function AirplaneMarker({ data }) {
   const { latitude, longitude } = data
