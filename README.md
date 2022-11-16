@@ -8,6 +8,10 @@
 
 > This library was inspired from [leaflet-drift-marker](https://github.com/hugobarragon/leaflet-drift-marker#drift_marker-with-leaflet) and [react-leaflet-rotatedmarker](https://github.com/verdie-g/react-leaflet-rotatedmarker).
 
+Check-out a working example here: 
+
+[![Edit leaflet-tracking-marker](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-leaflet-tracking-marker-example-ivlhk?file=/src/App.js)
+
 ## Installation
 
 ```bash
@@ -51,7 +55,7 @@ function AirplaneMarker({ data }) {
   return <LeafletTrackingMarker icon={icon} position={[latitude, longitude]} previousPosition={prevPos} duration={1000} />
 }
 ```
-Also check-out this working example here: https://codesandbox.io/s/react-leaflet-tracking-marker-example-ivlhk?file=/src/App.js
+
 # License
 
 MIT License
