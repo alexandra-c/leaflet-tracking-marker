@@ -1,7 +1,8 @@
 import { type ForwardRefExoticComponent, type RefAttributes } from 'react'
-import { type LatLngExpression, Marker, type MarkerOptions } from 'leaflet'
+import { type LatLngExpression, Marker } from 'leaflet'
+import { type MarkerProps } from 'react-leaflet';
 
-interface TrackingMarkerOptions extends MarkerOptions {
+interface TrackingMarkerOptions extends MarkerProps {
   /*
    * Previous position coordinates used to compute the bearing angle in degrees, clockwise. Defaults to 'center'
    */
